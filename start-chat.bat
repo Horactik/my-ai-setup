@@ -14,8 +14,9 @@ if "%OPENROUTER_API_KEY%"=="" (
   exit /b 1
 )
 
-echo Starting... your browser will open in about 20 seconds.
+echo Starting... the first start can take a few minutes.
+echo Your browser opens automatically as soon as the chat is ready.
 echo Keep this window open while you use the chat.
-start "" cmd /c "timeout /t 20 >nul & start http://localhost:8080"
+start "" /min powershell -NoProfile -WindowStyle Hidden -Command "for($i=0;$i -lt 450;$i++){try{Invoke-WebRequest http://localhost:8080/health -UseBasicParsing -TimeoutSec 2 | Out-Null; Start-Process http://localhost:8080; break}catch{Start-Sleep 2}}"
 open-webui serve --port 8080
 pause
