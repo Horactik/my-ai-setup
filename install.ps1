@@ -1,12 +1,12 @@
 # One-line installer / updater for my-ai-setup.
 # Run in PowerShell:
-#   irm https://raw.githubusercontent.com/YOUR-GITHUB-USERNAME/my-ai-setup/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/Horactik/my-ai-setup/main/install.ps1 | iex
 # Running it again later updates everything to the latest version on GitHub.
 
 $ErrorActionPreference = "Stop"
 
 # >>> Change this to your GitHub username/repo after you upload it <<<
-$Repo   = if ($env:AI_SETUP_REPO) { $env:AI_SETUP_REPO } else { "YOUR-GITHUB-USERNAME/my-ai-setup" }
+$Repo   = if ($env:AI_SETUP_REPO) { $env:AI_SETUP_REPO } else { "Horactik/my-ai-setup" }
 $Branch = "main"
 
 $dest = Join-Path $env:USERPROFILE "my-ai-setup"

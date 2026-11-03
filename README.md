@@ -18,7 +18,7 @@ Everything uses one OpenRouter key, and you pay only for what you use.
 **From GitHub (any Windows PC, one line):** open PowerShell and run
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR-GITHUB-USERNAME/my-ai-setup/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Horactik/my-ai-setup/main/install.ps1 | iex
 ```
 
 Run the same line again any time to **update** to the latest version in this repo. Your key, chats and settings are kept.
