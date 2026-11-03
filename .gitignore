@@ -1,0 +1,7 @@
+# Never commit keys or local data
+.env
+*.key
+open-webui-data/
+__pycache__/
+*.pyc
+test-output/

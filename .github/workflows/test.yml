@@ -1,0 +1,32 @@
+name: Test office tools
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Check PowerShell scripts parse
+        shell: pwsh
+        run: |
+          foreach ($f in "setup.ps1", "install.ps1") {
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $f), [ref]$null, [ref]$errors) | Out-Null
+            if ($errors) { $errors; exit 1 }
+            "$f OK"
+          }
+      - name: Run office_tools round-trip
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory test-output | Out-Null
+          "# Test`n`nHello **world**.`n`n- one`n- two`n`n| A | B |`n|---|---|`n| 1 | 2 |" | Set-Content test-output/t.md
+          "Item,Price,Total`nA,2.5,=B2*2" | Set-Content test-output/t.csv
+          uv run office_tools.py md2docx test-output/t.md test-output/t.docx
+          uv run office_tools.py docx2md test-output/t.docx
+          uv run office_tools.py csv2xlsx test-output/t.csv test-output/t.xlsx
+          uv run office_tools.py xlsxinfo test-output/t.xlsx
