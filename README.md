@@ -87,7 +87,7 @@ Install Ollama from https://ollama.com and run `ollama pull qwen3:14b` (or a sma
 ## Putting this on GitHub (first time)
 1. Create a **public** repo named `my-ai-setup` at https://github.com/new. It must be public for the one-line installer to download it.
 2. Upload every file in this folder, including the hidden `.github` folder and `.gitattributes`. On the empty repo page, click **uploading an existing file** and drag everything in. Or use GitHub Desktop.
-3. In `install.ps1` and this README, replace `YOUR-GITHUB-USERNAME` with your GitHub username, then commit.
+3. (Already done: the installer points at `Horactik/my-ai-setup`.)
 4. The **Actions** tab automatically runs a test on Windows every time you change something.
 
 Never commit your OpenRouter key. `.gitignore` already blocks the usual key files.
